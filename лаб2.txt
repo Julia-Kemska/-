@@ -1,0 +1,80 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{   double fir[1000],sec[1000],uni[2000],inter[1000];
+    int suni = 0,sinter=0;
+    int s1,s2;
+    double a;
+    cout<<"Enter size of the first set"<<endl;
+    cin>>s1;
+    cout<<"Enter elements of the first set"<<endl;
+    suni = s1;
+    int i = 1;
+    while(i<=s1){
+        cin>>a;
+        int repeat = 0;
+        for(int j=1;j<i;j++){
+            if(fir[j]==a){repeat = 1;cout<<"Enter another number"<<endl;break;}
+        }
+        if(repeat == 0){
+        fir[i]=a;
+        uni[i]=fir[i];
+        i++;
+        }
+    }
+    cout<<endl<<"First set"<<endl;
+    for(int i=1;i<=s1;i++)
+        cout<<fir[i]<<' ';
+        cout<<endl;
+    cout<<"Enter size of the second set"<<endl;
+    cin>>s2;
+    cout<<"Enter elements of the second set"<<endl;
+    i = 1;
+    while(i<=s2){
+        cin>>a;
+        int repeat = 0,un = 0;
+        for(int j=1;j<=i;j++){
+            if(sec[j]==a){repeat = 1;cout<<"Enter another number"<<endl;break;}
+        }
+        if(repeat == 0){
+           sec[i] = a;
+           for(int j = 1; j<=s1; j++)
+        {
+            if(sec[i]==fir[j])
+            {   sinter++;
+                inter[sinter]=sec[i];
+                un = 1;
+                break; }
+        }
+        if(un==0)
+        {   suni++;
+            uni[suni]=sec[i]; }
+        i++;
+        }
+    }
+        cout<<endl<<"Second set"<<endl;
+    for(int i=1;i<=s2;i++)
+        cout<<sec[i]<<' ';
+        cout<<endl;
+    cout<<"Union of sets"<<endl;
+    if(suni == 0){
+        cout<<"The set is empty"<<endl;
+    }
+    for(int i =1; i<=suni; i++)
+        cout<<uni[i]<<' ';
+
+    cout<<"Power "<<suni<<endl;
+    cout<<"Intersection of sets"<<endl;
+    for(int i =1; i<=sinter; i++)
+        cout<<inter[i]<<' ';
+        if(sinter == 0){
+        cout<<"The set is empty"<<endl;
+    }
+    cout<<"Power "<<sinter<<endl; }
+
+
+
+
+

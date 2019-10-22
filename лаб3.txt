@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+int n;
+cout<<"Enter size of arrays"<<endl;
+cin>>n;
+int A[n];
+int B[n];
+int a[n][n];
+cout<<"Enter elements of A"<<endl;
+for(int i=0;i<n;i++)
+    cin>>A[i];
+cout<<"Enter elements of B"<<endl;
+for(int i=0;i<n;i++)
+    cin>>B[i];
+for (int i=0; i<n; i++){
+    for (int j=0; j<n; j++){
+        a[i][j] = 0;
+        if (A[i]*A[i]<B[j]){
+            a[i][j]=1;
+        }
+    }
+}
+cout<<"The matrix"<<endl;
+for (int i=0; i<n; i++){
+    for (int j=0; j<n; j++){
+        cout<<a[i][j]<<' ';
+    }cout<<endl;
+}
+int refl = 0;
+for(int i=0;i<n;i++)
+    refl+=a[i][i];
+if(refl==n){
+    cout<<"Reflexive"<<endl;
+}else
+if(refl==0){
+    cout<<"Antireflexive"<<endl;
+}
+else
+    cout<<"Areflexive"<<endl;
+int sem = 0;
+for(int i=0;i<n;i++)
+{
+    for(int j=i+1;j<n;j++)
+    {
+        if(a[j][i]!=a[i][j])sem++;
+    }
+}
+if(sem==0){
+     cout<<"Semetric"<<endl;
+}else if(sem==n*(n-1)/2){
+    cout<<"Antisemetric"<<endl;
+}else
+cout<<"Asemetric"<<endl;
+
+int trans=0,numb = 0;
+for (int i=0; i<n; i++){
+    for (int j=0; j<n; j++){
+        if(a[i][j]==1 && i!=j){
+            numb++;
+            for (int k=0;k<n;k++)
+                if(a[j][k]==1 && a[k][i]==1 && j!=k){trans++;break;}
+        }
+    }
+}
+if(trans==numb && numb != 0)cout<<"Transitive"<<endl;
+else if(trans==0)cout<<"Antitransitive"<<endl;
+else cout<<"Atransitive"<<endl;
+}

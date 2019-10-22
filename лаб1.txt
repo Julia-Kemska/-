@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <iostream>
+
+using namespace std;
+//Функція перевірки конкретності введених даних
+int ok(int a){
+    if(a==1 || a==0)
+    return 1; return 0;
+}
+//Функція імплікації
+int impl(int p, int q){
+    if (p==1 && q==0)
+    return 0;
+    return 1;
+}
+int main ()
+{
+    int x=-1, y=-1, z=-1;
+    //Введення даних
+    while(ok(y)*ok(x)*ok(z)==0){
+      cout<<"Enter x, y and z like 0 or 1"<<endl;
+      cin>>x>>y>>z;
+      if (ok(y)*ok(x)*ok(z)==0)
+      cout<<"Enter correct numbers"<<endl;
+    }
+    //Вивід таблиці істиності для введених даних
+      cout<<"| x | y | z | (y/\\z) | x=>(y/\\z) | (x=>(y/\\z))=>(x=>(y/\\z)) |"<<endl;
+
+       cout<<"| "<<x<<" | "<<y<<" | "<<z<<" |   "<<(y&z)<<"   |   "<<impl(x,y&z)<<"    |      "<< impl(impl(x,y&z),impl(x,y&z))<<"    |";
+}
